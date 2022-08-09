@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+body{
+    background-image: url("../public/walp.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: rgb(51, 58, 45);
+    font-family: 'Ubuntu', sans-serif;
+    #LogIn{
+        font-size: 2rem;
+        text-align: center;
+        margin: 20vh auto;
+        padding: 30px;
+        width: 80%;
+        background-color: rgba(0, 0, 0, 0.4);
+        border-radius: 20px;
+        color: white;
+        input{
+            text-align: center;
+            width: 90%;
+            background-color: rgba(0, 0, 0, 0.4);
+            color: white;
+            border-radius: 50px;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            &::placeholder{
+                color:red;
+            }
+        }
+        button{
+            font-size: 2.5rem;
+            text-align: center;
+            width: 90%;
+            background-color: rgba(0, 0, 0, 0.4);
+            color: white;
+            border-radius: 50px;
+            margin-bottom: 30px;
+        }
+        a{
+            display: block;
+            text-decoration: none;
+            font-size: 2.5rem;
+            text-align: center;
+            width: 90%;
+            background-color: rgba(0, 0, 0, 0.4);
+            color: white;
+            border-radius: 50px;
+            margin: 0 auto 30px auto;
+            box-shadow: 1px 1px 1px white inset;
+        }
+        input, button, a{
+            &:hover{
+                background-color: rgba(255, 0, 0, 0.6);
+            }
+        }
+    }
+}
