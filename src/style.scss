@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
 body{
+    margin:0;
+    padding:0;
     background-image: url("../public/walp.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -7,11 +9,14 @@ body{
     font-family: 'Ubuntu', sans-serif;
     .App{
         header{
+            // background-color: rgba(0, 0, 0, 0.6);
             display: flex;
             justify-content: space-between;
+            padding:10px 40px;
             h1{
                 margin: 0;
                 padding: 0;
+                color: white;
             }
         }
         main{
@@ -24,15 +29,22 @@ body{
             border-radius: 20px;
             color: white;
             section{
-                display: flex;
-                justify-content: space-between;
-                text-align: center;
+                // display: flex;
+                // flex-wrap: wrap;
+                // justify-content: space-between;
+                // text-align: center;
+                // justify-content: stretch;
+                display: grid;
+                grid-template-columns: 5% 5% 25% 55% 5% 5%;
                 width: 100%;
                 background-color: rgba(180, 180, 180, 0.8);
                 color: white;
                 border-radius: 10px;
                 margin-bottom: 10px;
                 padding: 10px;
+                div{
+                    text-align: left;
+                }
                 input[type="checkbox"]{
                     width: 50px;
                 }
@@ -94,6 +106,7 @@ button{
     background-color: rgba(180, 180, 180, 0.8);
     color: white;
     border-radius: 50px;
+    padding: 0 10px;
     &:hover{
         background-color: rgba(255, 0, 0, 0.6);
     }
@@ -101,8 +114,8 @@ button{
 form{
     font-size: 2rem;
     text-align: center;
-    margin: 20vh auto;
-    padding: 30px;
+    margin: 3vh auto;
+    padding: 10px;
     background-color: rgba(0, 0, 0, 0.6);
     border-radius: 20px;
     color: white;
@@ -111,10 +124,57 @@ form{
         background-color: rgba(180, 180, 180, 0.8);
         color: white;
         border-radius: 50px;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
         font-size: 2.5rem;
         &::placeholder{
-            color:red;
+            color:rgba(255, 0, 0, 0.6);
         }
+    }
+}
+
+@media screen and (max-width:1024px) {
+    body{
+        background-size: 400%;
+        .App{
+            header{
+                padding:5px 5px;
+                h1{
+                    margin: 0;
+                    padding: 0;
+                    color: white;
+                }
+            }
+            main{
+                font-size: 1rem;
+                padding: 10px;
+                width: 100%;
+                section{
+                    display: flex;
+                    justify-content:left;
+                    flex-wrap: wrap;
+                    width: 93%;
+                }
+            }
+        }
+        
+    }
+}
+@media screen and (max-width:512px) {
+    body{
+        .App{
+            main{
+                font-size: 1rem;
+                padding: 10px;
+                width: 100%;
+                section{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content:left;
+                    flex-wrap: wrap;
+                    width: 93%;
+                }
+            }
+        }
+        
     }
 }

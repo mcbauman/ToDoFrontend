@@ -32,6 +32,16 @@ export default function ToDoList(props){
         })
         .catch(err=>console.log(err))
     }
+
+    function removeItem(id,itemName,discription){
+        axios.delete("https://localhost:7122/Item",{id,itemName,discription,UserId:props.user})
+        .then(res=>{
+            console.log(res)
+            GetItems();
+        })
+        .catch(err=>console.log(err))
+    }
+
     useEffect(()=>{
         GetItems();
     },[])
@@ -49,8 +59,8 @@ export default function ToDoList(props){
                             <div>{item.id}</div>
                             <div>{item.itemName}</div>
                             <div>{item.discription}</div>
-                            <button><BiEditAlt/></button>
-                            <button><AiOutlineDelete/></button>
+                            <button ><BiEditAlt/></button>
+                            <button onClick={()=>removeItem(item.id,item.itemName,item.discription)}><AiOutlineDelete/></button>
                         </section>
                 ))
                 ):<p>Loading ...</p>}
