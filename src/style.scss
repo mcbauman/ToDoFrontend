@@ -9,7 +9,7 @@ body{
     font-family: 'Ubuntu', sans-serif;
     .App{
         header{
-            // background-color: rgba(0, 0, 0, 0.6);
+            background-color: rgba(0, 0, 0, 0.6);
             display: flex;
             justify-content: space-between;
             padding:10px 40px;
@@ -29,11 +29,6 @@ body{
             border-radius: 20px;
             color: white;
             section{
-                // display: flex;
-                // flex-wrap: wrap;
-                // justify-content: space-between;
-                // text-align: center;
-                // justify-content: stretch;
                 display: grid;
                 grid-template-columns: 5% 5% 25% 55% 5% 5%;
                 width: 100%;

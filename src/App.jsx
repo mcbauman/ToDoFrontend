@@ -2,9 +2,6 @@ import { useEffect, useState } from "react"
 import ToDoList from "./ToDoList"
 import LogOrSign from "./LogOrSign"
 
-import LogIn from "./LogIn"
-import CreateUser from "./CreateUser"
-
 export default function App(){
     const [user,setUser]=useState()
     useEffect(()=>{
