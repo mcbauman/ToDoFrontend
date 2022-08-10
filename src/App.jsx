@@ -9,7 +9,7 @@ export default function App(){
     },[user])
     return(
         <>
-            {user?<ToDoList setUser={setUser} />:<LogIn setUser={setUser} />}
+            {user?<ToDoList user={user} setUser={setUser} />:<LogIn setUser={setUser} />}
         </>
     )
 }
