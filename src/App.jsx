@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react"
 import ToDoList from "./ToDoList"
+import LogOrSign from "./LogOrSign"
+
 import LogIn from "./LogIn"
+import CreateUser from "./CreateUser"
 
 export default function App(){
     const [user,setUser]=useState()
@@ -9,7 +12,7 @@ export default function App(){
     },[user])
     return(
         <>
-            {user?<ToDoList user={user} setUser={setUser} />:<LogIn setUser={setUser} />}
+            {user?<ToDoList user={user} setUser={setUser} />:<LogOrSign user={user} setUser={setUser} />}
         </>
     )
 }
