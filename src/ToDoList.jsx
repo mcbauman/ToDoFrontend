@@ -1,15 +1,34 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { BiEditAlt, BiAddToQueue } from "react-icons/bi"
+import {MdDownloadDone} from "react-icons/md"
+import {AiOutlineCloseCircle} from "react-icons/ai"
 import {AiOutlineDelete}from "react-icons/ai"
 
 export default function ToDoList(props){
     const [items,setItems]=useState([])
+    const [show, setShow]=useState(false)
+    const [ItemName, setTaksName]=useState()
+    const [Discription, setTaskDesc]=useState()
+
     function GetItems(){
         axios.get(`https://localhost:7122/Item?id=${props.user}`)
         .then(res=>{
             console.log(res.data)
             setItems(res.data)
+        })
+        .catch(err=>console.log(err))
+    }
+
+    function StoreNewTask(e){
+        e.preventDefault();
+        axios.post("https://localhost:7122/Item",{UserId:props.user,ItemName,Discription})
+        .then(res=>{
+            console.log(res.data)
+            GetItems();
+            setTaksName()
+            setTaskDesc()
+            setShow(false)
         })
         .catch(err=>console.log(err))
     }
@@ -26,16 +45,23 @@ export default function ToDoList(props){
                 {items.length>0?(
                     items.map(item=>(
                         <section>
+                            <input type="Checkbox"/>
                             <div>{item.id}</div>
                             <div>{item.itemName}</div>
                             <div>{item.discription}</div>
-                            <input type="Checkbox"/>
                             <button><BiEditAlt/></button>
                             <button><AiOutlineDelete/></button>
                         </section>
                 ))
                 ):<p>Loading ...</p>}
-                <button><BiAddToQueue/></button>
+                {show?(
+                    <form onSubmit={StoreNewTask}>
+                        <input type="text" placeholder="Task-Name" onChange={e=>setTaksName(e.target.value)} />
+                        <input type="text" placeholder="Task-Description" onChange={e=>setTaskDesc(e.target.value)} />
+                        <button type="submit"><MdDownloadDone/></button>
+                        <button onClick={()=>setShow(false)}><AiOutlineCloseCircle/></button>
+                    </form>
+                ):<button onClick={()=>setShow(true)}><BiAddToQueue/></button>}
             </main>
         </div>
     )

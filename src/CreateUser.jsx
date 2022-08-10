@@ -10,8 +10,7 @@ export default function CreateUser(){
 
     function signUpFunction(e){
         e.preventDefault();
-        console.log("loginFunctionExec");
-        axios.post(`https://localhost:7122/user/create`,{id:4,name,email,password})
+        axios.post(`https://localhost:7122/user/create`,{name,email,password})
         .then ((res)=>{
             // if(res.data!="Password missmatch"){
             //     props.setUser(res.data)
