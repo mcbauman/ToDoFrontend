@@ -9,7 +9,7 @@ export default function LogIn(props){
     const [password, setPassword]=useState("")
     function loginFunction(e){
         e.preventDefault();
-        console.log("loginFunctionExec");
+        console.log("loginFunctionExec",{name,password});
         axios.post(`https://localhost:7122/login`,{name,password})
         .then ((res)=>{
             if(res.data!="Password missmatch"){

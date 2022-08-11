@@ -14,7 +14,7 @@ export default function ToDoList(props){
     const [Discription, setTaskDesc]=useState()
 
     function GetItems(){
-        axios.get(`https://localhost:7122/Item?id=${props.user}`)
+        axios.post(`https://localhost:7122/getItems`,{Id:props.user})
         .then(res=>{
             console.log(res.data)
             setItems(res.data)
