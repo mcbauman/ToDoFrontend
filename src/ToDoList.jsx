@@ -34,9 +34,12 @@ export default function ToDoList(props){
     }
 
     function removeItem(id,itemName,discription){
-        axios.delete("https://localhost:7122/Item",{id,itemName,discription,UserId:props.user})
+        let removeBody={UserId:props.user,id,itemName,discription}
+        console.log("{id,itemName,discription}",removeBody);
+        axios.delete("https://localhost:7122/Item",{data:removeBody})
         .then(res=>{
-            console.log(res)
+            console.log({id,itemName,discription,UserId:props.user})
+            console.log("DELETE RESPONSE",res)
             GetItems();
         })
         .catch(err=>console.log(err))
