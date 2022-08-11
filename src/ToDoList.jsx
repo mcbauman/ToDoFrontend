@@ -69,20 +69,24 @@ export default function ToDoList(props){
                 {items.length>0?(
                     items.map(item=>(
                         <section>
-                            <input type="Checkbox"/>
-                            <div>{item.id}</div>
-                            <div>{item.itemName}</div>
-                            <div>{item.discription}</div>
+                            <div>
+                                <input type="Checkbox"/>
+                                <div>{item.id}</div>
+                                <div>{item.itemName}</div>
+                            </div>
+                                <div>{item.discription}</div>
+                            <div>
+                                <button onClick={()=>removeItem(item.id,item.itemName,item.discription)}><AiOutlineDelete/></button>
+                                {show2==item.id?(
+                                    <form onSubmit={(e)=>{updateItem(item.id,item.itemName,item.discription); e.preventDefault()}}>
+                                        <input type="text" placeholder={item.itemName}/>
+                                        <input type="text" placeholder={item.discription}/>
+                                        <button type="submit"><GiConfirmed/></button>
+                                        <button onClick={()=>setShow2(false)}><AiOutlineCloseCircle/></button>
+                                    </form>
+                                ):<button onClick={()=>setShow2(item.id)}><BiEditAlt/></button>}
+                            </div>
                             {/* <button ><BiEditAlt/></button> */}
-                            <button onClick={()=>removeItem(item.id,item.itemName,item.discription)}><AiOutlineDelete/></button>
-                            {show2==item.id?(
-                                <form onSubmit={(e)=>{updateItem(item.id,item.itemName,item.discription); e.preventDefault()}}>
-                                    <input type="text" placeholder={item.itemName}/>
-                                    <input type="text" placeholder={item.discription}/>
-                                    <button type="submit"><GiConfirmed/></button>
-                                    <button onClick={()=>setShow2(false)}><AiOutlineCloseCircle/></button>
-                                </form>
-                            ):<button onClick={()=>setShow2(item.id)}><BiEditAlt/></button>}
                         </section>
                 ))
                 ):<p>Loading ...</p>}

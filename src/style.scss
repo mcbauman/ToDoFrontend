@@ -1,5 +1,8 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
 body{
+    --mainBG:rgba(0, 0, 0, 0.6);
+    --secBG:rgba(180, 180, 180, 0.8);
     margin:0;
     padding:0;
     background-image: url("../public/walp.jpeg");
@@ -9,7 +12,7 @@ body{
     font-family: 'Ubuntu', sans-serif;
     .App{
         header{
-            background-color: rgba(0, 0, 0, 0.6);
+            background-color: var(--mainBG);
             display: flex;
             justify-content: space-between;
             padding:10px 40px;
@@ -25,19 +28,23 @@ body{
             margin: 5vh auto;
             padding: 30px;
             width: 90%;
-            background-color: rgba(0, 0, 0, 0.6);
+            background-color: var(--mainBG);
             border-radius: 20px;
             color: white;
             section{
-                display: grid;
-                grid-template-columns: 5% 5% 25% 55% 5% 5%;
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                // display: grid;
+                // grid-template-columns: 5% 5% 25% 55% 5% 5%;
                 width: 100%;
-                background-color: rgba(180, 180, 180, 0.8);
+                background-color: var(--secBG);
                 color: white;
                 border-radius: 10px;
                 margin-bottom: 10px;
                 padding: 10px;
                 div{
+                    display: flex;
                     text-align: left;
                 }
                 input[type="checkbox"]{
@@ -52,28 +59,24 @@ body{
         margin: 20vh auto;
         padding: 30px;
         width: 80%;
-        background-color: rgba(0, 0, 0, 0.6);
+        background-color: var(--mainBG);
         border-radius: 20px;
         color: white;
         input{
             text-align: center;
             width: 90%;
-            background-color: rgba(180, 180, 180, 0.8);
+            background-color: var(--secBG);
             color: white;
             border-radius: 50px;
             margin-bottom: 30px;
             font-size: 2.5rem;
             &::placeholder{
-                color:red;
+                color:rgba(255, 0, 0, 0.6);
             }
         }
         button{
             font-size: 2.5rem;
-            text-align: center;
             width: 90%;
-            background-color: rgba(180, 180, 180, 0.8);
-            color: white;
-            border-radius: 50px;
             margin-bottom: 30px;
         }
         a{
@@ -82,7 +85,7 @@ body{
             font-size: 2.5rem;
             text-align: center;
             width: 90%;
-            background-color: rgba(180, 180, 180, 0.8);
+            background-color: var(--secBG);
             color: white;
             border-radius: 50px;
             margin: 0 auto 30px auto;
@@ -97,8 +100,9 @@ body{
 }
 button{
     font-size: 1.5rem;
+    // height: 24px;
     text-align: center;
-    background-color: rgba(180, 180, 180, 0.8);
+    background-color: var(--secBG);
     color: white;
     border-radius: 50px;
     padding: 0 10px;
@@ -144,10 +148,16 @@ form{
                 padding: 10px;
                 width: 100%;
                 section{
-                    display: flex;
-                    justify-content:left;
-                    flex-wrap: wrap;
+                    // display: flex;
+                    // justify-content:left;
+                    // flex-wrap: wrap;
                     width: 93%;
+                    form{
+                        font-size: 1px;
+                        input{
+                            font-size: 1rem;
+                        }
+                    }
                 }
             }
         }
@@ -167,6 +177,7 @@ form{
                     justify-content:left;
                     flex-wrap: wrap;
                     width: 93%;
+                    button{}
                 }
             }
         }
