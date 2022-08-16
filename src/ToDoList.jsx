@@ -14,7 +14,10 @@ export default function ToDoList(props){
     const [Discription, setTaskDesc]=useState()
 
     function GetItems(){
-        axios.post(`https://localhost:7122/getItems`,{Id:props.user})
+        const headers = { Authorization: `Bearer ${props.user}` };
+        const data = {Id:props.user}
+        console.log("HEADERS",headers);
+        axios.post(`https://localhost:7122/getItems`,{data},{headers})
         .then(res=>{
             console.log(res.data)
             setItems(res.data)
