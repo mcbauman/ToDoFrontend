@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { BiEditAlt, BiAddToQueue } from "react-icons/bi"
-import {MdDownloadDone} from "react-icons/md"
+import {MdDownloadDone, MdDarkMode, MdLightMode } from "react-icons/md"
 import {AiOutlineCloseCircle} from "react-icons/ai"
 import {AiOutlineDelete}from "react-icons/ai"
 import { GiConfirmed } from "react-icons/gi" 
@@ -16,10 +16,8 @@ export default function ToDoList(props){
     function GetItems(){
         const headers = { Authorization: `Bearer ${props.user}` };
         const data = {Id:props.user}
-        console.log("HEADERS",headers);
         axios.post(`https://localhost:7122/getItems`,{data},{headers})
         .then(res=>{
-            console.log(res.data)
             setItems(res.data)
         })
         .catch(err=>console.log(err))
@@ -29,7 +27,6 @@ export default function ToDoList(props){
         e.preventDefault();
         axios.post("https://localhost:7122/Item",{UserId:props.user,ItemName,Discription})
         .then(res=>{
-            console.log(res.data)
             GetItems();
             setTaksName()
             setTaskDesc()
@@ -40,11 +37,8 @@ export default function ToDoList(props){
 
     function removeItem(id,itemName,discription){
         let removeBody={UserId:props.user,id,itemName,discription}
-        console.log("{id,itemName,discription}",removeBody);
         axios.delete("https://localhost:7122/Item",{data:removeBody})
         .then(res=>{
-            console.log({id,itemName,discription,UserId:props.user})
-            console.log("DELETE RESPONSE",res)
             GetItems();
         })
         .catch(err=>console.log(err))
@@ -53,7 +47,6 @@ export default function ToDoList(props){
     function updateItem(id, itemName,discription){
         axios.put("https://localhost:7122/Item",{UserId:props.user,id,itemName,discription})
         .then(res=>{
-            console.log("UPDATE RESPONSE",res);
             GetItems();
         })
         .catch(err=>console.log(err))
@@ -63,15 +56,18 @@ export default function ToDoList(props){
         GetItems();
     },[])
     return (
-        <div className="App">
+        <div className={props.theme+" App"}>
             <header>
+                <button onClick={()=>props.setTheme(props.theme=="dark"?"light":"dark")}>
+                    {props.theme=="dark"?<MdDarkMode/>:<MdLightMode/>}
+                </button>
                 <h1>Your Todo List</h1>
                 <button onClick={()=>props.setUser("")}>LOG Out</button>
             </header>
             <main>
                 {items.length>0?(
                     items.map(item=>(
-                        <section>
+                        <section key={item.id}>
                             <div>
                                 <input type="Checkbox"/>
                                 <div>{item.id}</div>

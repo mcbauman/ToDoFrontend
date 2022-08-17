@@ -12,16 +12,12 @@ export default function CreateUser(){
         e.preventDefault();
         axios.post(`https://localhost:7122/user/create`,{name,email,password})
         .then ((res)=>{
-            // if(res.data!="Password missmatch"){
-            //     props.setUser(res.data)
-            // }
-            console.log(res.data)
         })
         .catch(err=>console.log(err))
     }
 
     return (
-        <form id="LogIn"onSubmit={signUpFunction}>
+        <form id="LogIn" onSubmit={signUpFunction}>
             <h1>Please Sign Up</h1>
             <input type="text" placeholder="name" onChange={(e)=>setName(e.target.value)} />
             <input type="text" placeholder="@" onChange={(e)=>setEmail(e.target.value)} />
