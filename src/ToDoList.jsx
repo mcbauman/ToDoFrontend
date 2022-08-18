@@ -58,7 +58,7 @@ export default function ToDoList(props){
     return (
         <div className={props.theme+" App"}>
             <header>
-                <button onClick={()=>props.setTheme(props.theme=="dark"?"light":"dark")}>
+                <button className="greenBtn" onClick={()=>props.setTheme(props.theme=="dark"?"light":"dark")}>
                     {props.theme=="dark"?<MdDarkMode/>:<MdLightMode/>}
                 </button>
                 <h1>Your Todo List</h1>
@@ -68,26 +68,30 @@ export default function ToDoList(props){
                 {items.length>0?(
                     items.map(item=>(
                         <section key={item.id}>
-                            <div>
-                                <input type="Checkbox"/>
-                                <div>{item.id}</div>
-                                <div>{item.itemName}</div>
-                            </div>
-                                <div>{item.discription}</div>
                             <div className={show2?"enrolled specialDib":"specialDiv"}>
-                                {show2==item.id?(
-                                    <form onSubmit={(e)=>{updateItem(item.id,item.itemName,item.discription); e.preventDefault()}}>
-                                        <input type="text" placeholder={item.itemName}/>
-                                        <input type="text" placeholder={item.discription}/>
-                                        <button type="submit"><GiConfirmed/></button>
+                                {show2!=item.id?(
+                                (<div>
+                                    <div>
+                                    <input type="Checkbox"/>
+                                    <div>{item.id}</div>
+                                    <div>{item.itemName}</div>
+                                </div>
+                                <div>{item.discription}</div>
+                                <div className="btndiv">
+                                    <button className="yellowBtn" onClick={()=>setShow2(item.id)}><BiEditAlt/></button>
+                                    <button onClick={()=>removeItem(item.id,item.itemName,item.discription)}><AiOutlineDelete/></button>
+                                </div>
+                                </div>)
+                                ):
+                                <form onSubmit={(e)=>{updateItem(item.id,item.itemName,item.discription); e.preventDefault()}}>
+                                    <input type="text" placeholder={item.itemName}/>
+                                    <input type="text" placeholder={item.discription}/>
+                                    <div className="btndiv">
+                                        <button className="greenBtn" type="submit"><GiConfirmed/></button>
                                         <button onClick={()=>setShow2(false)}><AiOutlineCloseCircle/></button>
-                                        <button onClick={()=>removeItem(item.id,item.itemName,item.discription)}><AiOutlineDelete/></button>
-                                    </form>
-                                ):(<>
-                                <button onClick={()=>setShow2(item.id)}><BiEditAlt/></button>
-                                <button onClick={()=>removeItem(item.id,item.itemName,item.discription)}><AiOutlineDelete/></button>
-                                </>
-                                )}
+                                    </div>
+                                </form>
+                                }
                             </div>
                             {/* <button ><BiEditAlt/></button> */}
                         </section>
@@ -97,10 +101,12 @@ export default function ToDoList(props){
                     <form onSubmit={StoreNewTask}>
                         <input type="text" placeholder="Task-Name" onChange={e=>setTaksName(e.target.value)} />
                         <input type="text" placeholder="Task-Description" onChange={e=>setTaskDesc(e.target.value)} />
-                        <button type="submit"><MdDownloadDone/></button>
-                        <button onClick={()=>setShow(false)}><AiOutlineCloseCircle/></button>
+                        <div className="btndiv">
+                            <button type="submit" className="greenBtn"><MdDownloadDone/></button>
+                            <button onClick={()=>setShow(false)}><AiOutlineCloseCircle/></button>
+                        </div>
                     </form>
-                ):<button onClick={()=>setShow(true)}><BiAddToQueue/></button>}
+                ):<button className="greenBtn" onClick={()=>setShow(true)}><BiAddToQueue/></button>}
             </main>
         </div>
     )

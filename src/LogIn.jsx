@@ -20,9 +20,9 @@ export default function LogIn(props){
     return (
         <form id="LogIn" onSubmit={loginFunction}>
             <h1>Please Log In</h1>
-            <input type="text" placeholder="name" onChange={(e)=>setName(e.target.value)} />
-            <input type="password" placeholder="***" onChange={(e)=>setPassword(e.target.value)}/>
-            <button type="Submit"><MdLogin/></button>
+            <input type="text" className="yellowBtn" placeholder="name" onChange={(e)=>setName(e.target.value)} />
+            <input type="password" className="yellowBtn" placeholder="***" onChange={(e)=>setPassword(e.target.value)}/>
+            <button className="greenBtn" type="Submit"><MdLogin/></button>
             <NavLink to="CreateUser">SignUp</NavLink>
         </form>
     )

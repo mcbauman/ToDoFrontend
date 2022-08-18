@@ -5,13 +5,12 @@ body{
     padding:0;
     background-image: url("../public/walp2.jpeg");
     background-size: cover;
-    background-position: center;
     background-repeat: repeat;
     background-color: rgb(51, 58, 45);
     font-family: 'Ubuntu', sans-serif;
     .dark{
         --mainBG:rgb(253 239 176 / 7%);
-        --secBG:rgba(80, 80, 80, 0.6);
+        --secBG:rgba(80, 80, 80, 0.8);
         --alert:rgba(255, 0, 0, 0.6);
         --inactive:rgba(211, 211, 211, 0.8);
         
@@ -27,7 +26,6 @@ body{
     .App{
         header{
             background-color: var(--secBG);
-            backdrop-filter: blur(5px);
             display: flex;
             justify-content: space-between;
             padding:10px 40px;
@@ -40,61 +38,32 @@ body{
         main{
             font-size: 1.5rem;
             text-align: center;
-            margin: 10vh auto;
-            //padding: 30px;
-            width: 95%;
+            margin: 5vh auto;
+            padding: 30px;
+            width: 90%;
             // background-color: var(--mainBG);
             border-radius: 20px;
             color: var(--text);
             section{
                 display: flex;
                 justify-content: space-between;
-                align-items: center;
-                //flex-wrap: wrap;
+                flex-wrap: wrap;
                 border: var(--secBG) solid 1px;
+                // display: grid;
+                // grid-template-columns: 5% 5% 25% 55% 5% 5%;
+                width: 100%;
                 backdrop-filter: blur(5px);
                 background-color: var(--secBG);
                 color: var(--text);
                 border-radius: 10px;
-                margin-bottom: 15px;
+                margin-bottom: 10px;
                 padding: 10px;
                 div{
-                    width: 100%;
                     display: flex;
-                    justify-content: space-between;
-                    align-items: center;
                     text-align: left;
-                    form{
-                        input{
-                            border: none;
-                            font-size: 1.5rem;
-                        }
-                    }
-                    .btndiv{
-                        flex-direction: row;
-                        justify-content: end;
-                    }
-                    div{
-                        .btndiv{
-                            justify-content: end;
-                        }
-                    }
                 }
                 input[type="checkbox"]{
-                    width: 23px;
-                    height: 23px;
-                }
-            }
-            form{
-                display: flex;
-                width: 95%;
-                input{
-                    border: none;
-                    font-size: 1.5rem;
-                }
-                .btndiv{
-                    display: flex;
-                    flex-direction: row;
+                    width: 50px;
                 }
             }
         }
@@ -102,9 +71,7 @@ body{
     #LogIn{
         max-width: 600px;
         font-size: 1.5rem;
-        // text-align: center;
-        display: flex;
-        flex-direction: column;
+        text-align: center;
         margin: 20vh auto;
         padding: 30px;
         width: 80%;
@@ -115,13 +82,11 @@ body{
         color: var(--text);
         h1{
             color:rgb(51, 58, 45);
-            text-align: center;
         }
         input{
             text-align: center;
-            //width: 90%;
-            // background-color: var(--secBG);
-            border: none;
+            width: 90%;
+            background-color: var(--secBG);
             color: var(--text);
             border-radius: 50px;
             margin-bottom: 30px;
@@ -132,16 +97,22 @@ body{
         }
         button{
             font-size: 2.5rem;
+            width: 90%;
             margin-bottom: 30px;
         }
         a{
+            display: block;
             text-decoration: none;
             font-size: 2.5rem;
             text-align: center;
+            width: 90%;
             background-color: var(--secBG);
             color: var(--text);
             border-radius: 50px;
-            // box-shadow: 1px 1px 1px white inset;
+            margin: 0 auto 30px auto;
+            box-shadow: 1px 1px 1px white inset;
+        }
+        input, a{
             &:hover{
                 background-color: rgba(255, 0, 0, 0.6);
                 box-shadow: 1px 1px 1px black inset;
@@ -150,28 +121,25 @@ body{
     }
 }
 button{
-    min-height: 46px;
-    min-width: 46px;
     font-size: 1.5rem;
     // height: 24px;
-    // text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
     background-color: var(--secBG);
     color: var(--text);
     border-radius: 50px;
     padding: 0 10px;
-    border: none;
-    // box-shadow: 1px 1px 1px white inset;
+    box-shadow: 1px 1px 1px white inset;
     &:hover{
         background-color: rgba(255, 0, 0, 0.6);
         box-shadow: 1px 1px 1px black inset;
     }
 }
 form{
-    // margin: 0 auto;
-    // padding: 10px;
+    margin: 0 auto;
+    padding: 10px;
     input{
         text-align: center;
         background-color: var(--secBG);
@@ -198,14 +166,12 @@ form{
 }
 .greenBtn{
     &:hover{
-        background-color: rgba(135, 254, 0, 0.6);
-        box-shadow: 1px 1px 1px black inset;
+        background-color: rgba(0, 254, 47, 0.6);
     }
 }
 .yellowBtn{
     &:hover{
-        background-color: rgba(219, 183, 20, 0.6);
-        box-shadow: 1px 1px 1px black inset;
+        background-color: rgba(255, 255, 0, 0.6);
     }
 }
 
@@ -224,12 +190,12 @@ form{
             main{
                 font-size: 1rem;
                 padding: 10px;
-                //width: 100%;
+                width: 100%;
                 section{
                     // display: flex;
                     // justify-content:left;
                     // flex-wrap: wrap;
-                    // width: 96%;
+                    width: 93%;
                     form{
                         font-size: 1px;
                         input{
@@ -252,25 +218,10 @@ form{
                 section{
                     display: flex;
                     flex-direction: column;
-                    align-items:flex-start;
+                    justify-content:left;
                     flex-wrap: wrap;
                     width: 93%;
-                    div{
-                        flex-direction: column;
-                        align-items:flex-start;
-                        div{
-                            div{
-                                flex-direction: row;
-                            }
-                        }
-                    }
                     button{}
-                }
-                form{
-                    flex-direction: column;
-                    input{
-                        width: 100%;
-                    }
                 }
             }
         }

@@ -19,10 +19,10 @@ export default function CreateUser(){
     return (
         <form id="LogIn" onSubmit={signUpFunction}>
             <h1>Please Sign Up</h1>
-            <input type="text" placeholder="name" onChange={(e)=>setName(e.target.value)} />
-            <input type="text" placeholder="@" onChange={(e)=>setEmail(e.target.value)} />
-            <input type="password" placeholder="***" onChange={(e)=>setPassword(e.target.value)}/>
-            <button type="Submit"><MdLogin/></button>
+            <input type="text" className="yellowBtn" placeholder="name" onChange={(e)=>setName(e.target.value)} />
+            <input type="text" className="yellowBtn" placeholder="@" onChange={(e)=>setEmail(e.target.value)} />
+            <input type="password" className="yellowBtn" placeholder="***" onChange={(e)=>setPassword(e.target.value)}/>
+            <button className="greenBtn" type="Submit"><MdLogin/></button>
             <NavLink to="*">LogIn</NavLink>
         </form>
     )
