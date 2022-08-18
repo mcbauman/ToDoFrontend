@@ -74,7 +74,7 @@ export default function ToDoList(props){
                                     <div>
                                     <input type="Checkbox"/>
                                     <div>{item.id}</div>
-                                    <div>{item.itemName}</div>
+                                    <div className="bold">{item.itemName}</div>
                                 </div>
                                 <div>{item.discription}</div>
                                 <div className="btndiv">

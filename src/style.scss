@@ -208,6 +208,9 @@ form{
         box-shadow: 1px 1px 1px black inset;
     }
 }
+.bold{
+    font-style: italic;
+}
 
 @media screen and (max-width:1024px) {
     body{
@@ -257,7 +260,7 @@ form{
                     width: 93%;
                     div{
                         flex-direction: column;
-                        align-items:flex-start;
+                        // align-items:flex-start;
                         div{
                             div{
                                 flex-direction: row;
