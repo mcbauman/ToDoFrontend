@@ -78,7 +78,7 @@ export default function ToDoList(props){
                 {items.length>0?(
                     items.map(item=>(
                         <section key={item.id}>
-                            <div className={show2?"enrolled specialDib":"specialDiv"}>
+                            <div className={show2?"enrolled specialDiv":"specialDiv"}>
                                 {show2!=item.id?(
 //List-Item
                                 (<div>
