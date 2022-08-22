@@ -14,7 +14,6 @@ body{
         --secBG:rgba(64, 64, 64, 0.6);
         --alert:rgba(255, 0, 0, 0.6);
         --inactive:rgba(211, 211, 211, 0.8);
-        
         --text:white;
     }
     .light{
@@ -44,7 +43,7 @@ body{
             //padding: 30px;
             width: 95%;
             // background-color: var(--mainBG);
-            border-radius: 20px;
+            border-radius: 10px;
             color: var(--text);
             section{
                 display: flex;
@@ -91,6 +90,9 @@ body{
                 input{
                     border: none;
                     font-size: 1.5rem;
+                    text-align: start;
+                    padding: 10px;
+                    font-family: 'Ubuntu', sans-serif;
                 }
                 .btndiv{
                     display: flex;
@@ -103,7 +105,14 @@ body{
                 border: var(--secBG) solid 1px;
                 color: var(--text);
                 backdrop-filter: blur(5px);
-                border-radius: 20px;
+                border-radius: 10px;
+                input{
+                    margin-right: 10px;
+                    margin-bottom: 0;
+                }
+                button{
+
+                }
             }
         }
     }
@@ -118,7 +127,7 @@ body{
         width: 80%;
         background-color: var(--mainBG);
         backdrop-filter: blur(5px);
-        border-radius: 20px;
+        border-radius: 10px;
         border: var(--secBG) solid 1px;
         color: var(--text);
         h1{
@@ -131,7 +140,7 @@ body{
             // background-color: var(--secBG);
             border: none;
             color: var(--text);
-            border-radius: 50px;
+            border-radius: 10px;
             margin-bottom: 30px;
             font-size: 2.5rem;
             &::placeholder{
@@ -148,7 +157,7 @@ body{
             text-align: center;
             background-color: var(--secBG);
             color: var(--text);
-            border-radius: 50px;
+            border-radius: 10px;
             // box-shadow: 1px 1px 1px white inset;
             &:hover{
                 background-color: rgba(255, 0, 0, 0.6);
@@ -168,8 +177,9 @@ button{
     justify-content: center;
     background-color: var(--secBG);
     color: var(--text);
-    border-radius: 50px;
+    border-radius: 10px;
     padding: 0 10px;
+    margin-right: 10px;
     border: none;
     // box-shadow: 1px 1px 1px white inset;
     &:hover{
@@ -184,7 +194,7 @@ form{
         text-align: center;
         background-color: var(--secBG);
         color: var(--text);
-        border-radius: 50px;
+        border-radius: 10px;
         margin-bottom: 10px;
         //margin-bottom: 10px;
         font-size: 2.5rem;
@@ -221,10 +231,10 @@ form{
     font-style: italic;
 }
 .input30{
-    width: 28%;
+    width: 27%;
 }
 .input70{
-    width: 70%;
+    width: 68%;
 }
 
 @media screen and (max-width:1024px) {
@@ -248,11 +258,24 @@ form{
                     // justify-content:left;
                     // flex-wrap: wrap;
                     // width: 96%;
-                    form{
-                        font-size: 1px;
-                        input{
-                            font-size: 1rem;
+                    div{
+                        form{
+                            font-size: 1px;
+                            input{
+                                font-size: 1rem;
+                            }
                         }
+                    }
+                }
+                form{
+                    font-size: 1px;
+                    input{
+                        font-size: 1rem;
+                    }
+                }
+                .newTask{
+                    input{
+                        margin-bottom: 10px;
                     }
                 }
             }
@@ -292,7 +315,7 @@ form{
                 form{
                     flex-direction: column;
                     input{
-                        width: 100%;
+                        width: 93%;
                     }
                 }
             }
