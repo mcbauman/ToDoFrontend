@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react"
 import {MdLogin} from "react-icons/md"
 
-
 export default function LogIn(props){
     const [name, setName]=useState("")
     const [password, setPassword]=useState("")

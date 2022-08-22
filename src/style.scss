@@ -103,8 +103,8 @@ body{
                 align-items: center;
                 padding: 10px;
                 border: var(--secBG) solid 1px;
-                color: var(--text);
                 backdrop-filter: blur(5px);
+                color: var(--text);
                 border-radius: 10px;
                 input{
                     margin-right: 10px;
@@ -273,11 +273,6 @@ form{
                         font-size: 1rem;
                     }
                 }
-                .newTask{
-                    input{
-                        margin-bottom: 10px;
-                    }
-                }
             }
         }
     }
@@ -311,6 +306,11 @@ form{
                         }
                     }
                     button{}
+                }
+                .newTask{
+                    input{
+                        margin-bottom: 10px;
+                    }
                 }
                 form{
                     flex-direction: column;

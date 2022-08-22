@@ -8,8 +8,12 @@ export default function LogOrSign(props){
         <div className={props.theme+" App"}>
             <button className="greenBtn" onClick={()=>props.setTheme(props.theme=="dark"?"light":"dark")}>{props.theme=="dark"?<MdDarkMode/>:<MdLightMode/>}</button>
             <Routes>
-                <Route path="*" element={<LogIn user={props.user} setUser={props.setUser} />}/>
-                <Route path="CreateUser" element={<CreateUser user={props.user} setUser={props.setUser} />}/>
+                <Route path="*" element={<LogIn user={props.user} 
+                setUser={props.setUser} theme={props.theme} 
+                setTheme={props.setTheme}/>}/>
+                <Route path="CreateUser" element={<CreateUser 
+                user={props.user} setUser={props.setUser} theme={props.theme} 
+                setTheme={props.setTheme}/>}/>
             </Routes>
         </div>
     )
