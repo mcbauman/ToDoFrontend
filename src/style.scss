@@ -137,6 +137,7 @@ body{
         color: var(--text);
         h1{
             //color:rgb(51, 58, 45);
+            color: rgba(225, 177, 44,1.0);
             text-align: center;
         }
         input{
@@ -150,6 +151,11 @@ body{
             font-size: 2.5rem;
             &::placeholder{
                 color:var(--inactive);
+            }
+            &:hover{
+                &::placeholder{
+                    color: rgba(251, 197, 49,1.0);
+                }
             }
         }
         button{
@@ -182,13 +188,13 @@ button{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--mainBG);
+    background-color: var(--secBG);
     color: var(--text);
     border-radius: 10px;
     padding: 0 10px;
     margin-right: 10px;
     border: none;
-    // box-shadow: 1px 1px 1px white inset;
+    box-shadow: 1px 1px 1px black;
     &:hover{
         transform: translate(2px, 2px);
         color: var(--alert);
@@ -233,7 +239,7 @@ form{
 }
 .yellowBtn{
     &:hover{
-        color: rgba(251, 197, 49,1.0);
+        color: white;
         //box-shadow: 1px 1px 1px black inset;
         transform: translate(2px, 2px);
     }
