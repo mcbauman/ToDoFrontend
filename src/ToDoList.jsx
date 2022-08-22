@@ -5,6 +5,7 @@ import {MdDownloadDone, MdDarkMode, MdLightMode } from "react-icons/md"
 import {AiOutlineCloseCircle} from "react-icons/ai"
 import {AiOutlineDelete}from "react-icons/ai"
 import { GiConfirmed } from "react-icons/gi" 
+import e from "cors"
 
 export default function ToDoList(props){
     const [items,setItems]=useState([])
@@ -14,9 +15,9 @@ export default function ToDoList(props){
     const [Discription, setTaskDesc]=useState()
 
     function GetItems(){
-        const headers = { Authorization: `Bearer ${props.user}` };
-        const data = {Id:props.user}
-        axios.post(`https://localhost:7122/getItems`,{data},{headers})
+        const header = { Authorization: `Bearer ${props.user}` };
+        const data = {}
+        axios.post(`https://localhost:7122/getItems`,data,{headers:header})
         .then(res=>{
             setItems(res.data)
         })
@@ -25,7 +26,11 @@ export default function ToDoList(props){
 
     function StoreNewTask(e){
         e.preventDefault();
-        axios.post("https://localhost:7122/Item",{UserId:props.user,ItemName,Discription})
+        const headers = { Authorization: `Bearer ${props.user}` };
+        const data = {ItemName,Discription}
+        console.log(headers);
+        console.log(data);
+        axios.post("https://localhost:7122/Item",data,{headers:headers})
         .then(res=>{
             GetItems();
             setTaksName()
@@ -36,18 +41,23 @@ export default function ToDoList(props){
     }
 
     function removeItem(id,itemName,discription){
-        let removeBody={UserId:props.user,id,itemName,discription}
-        axios.delete("https://localhost:7122/Item",{data:removeBody})
+        const headers = { Authorization: `Bearer ${props.user}` };
+        const data={id,itemName,discription}
+        console.log(data);
+        axios.delete("https://localhost:7122/Item",{headers:headers,data:data})
         .then(res=>{
             GetItems();
         })
         .catch(err=>console.log(err))
     }
-
-    function updateItem(id, itemName,discription){
-        axios.put("https://localhost:7122/Item",{UserId:props.user,id,itemName,discription})
+//Update Item
+    function updateItem(id){
+        const data={id, ItemName, Discription}
+        const headers = { Authorization: `Bearer ${props.user}` };
+        axios.put("https://localhost:7122/Item",data,{headers:headers})
         .then(res=>{
             GetItems();
+            setShow2(false);
         })
         .catch(err=>console.log(err))
     }
@@ -70,6 +80,7 @@ export default function ToDoList(props){
                         <section key={item.id}>
                             <div className={show2?"enrolled specialDib":"specialDiv"}>
                                 {show2!=item.id?(
+//List-Item
                                 (<div>
                                     <div>
                                     <input type="Checkbox"/>
@@ -83,9 +94,10 @@ export default function ToDoList(props){
                                 </div>
                                 </div>)
                                 ):
-                                <form onSubmit={(e)=>{updateItem(item.id,item.itemName,item.discription); e.preventDefault()}}>
-                                    <input type="text" placeholder={item.itemName}/>
-                                    <input type="text" placeholder={item.discription}/>
+// Update ITEM
+                                <form onSubmit={(e)=>{updateItem(item.id); e.preventDefault()}}>
+                                    <input className="input30" type="text" placeholder={item.itemName} onChange={e=>setTaksName(e.target.value)}/>
+                                    <input className="input70" type="text" placeholder={item.discription} onChange={e=>setTaskDesc(e.target.value)}/>
                                     <div className="btndiv">
                                         <button className="greenBtn" type="submit"><GiConfirmed/></button>
                                         <button onClick={()=>setShow2(false)}><AiOutlineCloseCircle/></button>
@@ -98,9 +110,10 @@ export default function ToDoList(props){
                 ))
                 ):<p>Loading ...</p>}
                 {show?(
-                    <form onSubmit={StoreNewTask}>
-                        <input type="text" placeholder="Task-Name" onChange={e=>setTaksName(e.target.value)} />
-                        <input type="text" placeholder="Task-Description" onChange={e=>setTaskDesc(e.target.value)} />
+//New Task
+                    <form className="newTask" onSubmit={StoreNewTask}>
+                        <input className="input30" type="text" placeholder="Task-Name" onChange={e=>setTaksName(e.target.value)} />
+                        <input className="input70" type="text" placeholder="Task-Description" onChange={e=>setTaskDesc(e.target.value)} />
                         <div className="btndiv">
                             <button type="submit" className="greenBtn"><MdDownloadDone/></button>
                             <button onClick={()=>setShow(false)}><AiOutlineCloseCircle/></button>

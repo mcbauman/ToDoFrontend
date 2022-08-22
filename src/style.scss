@@ -11,7 +11,7 @@ body{
     font-family: 'Ubuntu', sans-serif;
     .dark{
         --mainBG:rgb(253 239 176 / 7%);
-        --secBG:rgba(80, 80, 80, 0.6);
+        --secBG:rgba(64, 64, 64, 0.6);
         --alert:rgba(255, 0, 0, 0.6);
         --inactive:rgba(211, 211, 211, 0.8);
         
@@ -87,7 +87,7 @@ body{
             }
             form{
                 display: flex;
-                width: 95%;
+                //width: 95%;
                 input{
                     border: none;
                     font-size: 1.5rem;
@@ -96,6 +96,14 @@ body{
                     display: flex;
                     flex-direction: row;
                 }
+            }
+            .newTask{
+                align-items: center;
+                padding: 10px;
+                border: var(--secBG) solid 1px;
+                color: var(--text);
+                backdrop-filter: blur(5px);
+                border-radius: 20px;
             }
         }
     }
@@ -177,6 +185,7 @@ form{
         background-color: var(--secBG);
         color: var(--text);
         border-radius: 50px;
+        margin-bottom: 10px;
         //margin-bottom: 10px;
         font-size: 2.5rem;
         &::placeholder{
@@ -211,6 +220,12 @@ form{
 .bold{
     font-style: italic;
 }
+.input30{
+    width: 28%;
+}
+.input70{
+    width: 70%;
+}
 
 @media screen and (max-width:1024px) {
     body{
@@ -242,7 +257,12 @@ form{
                 }
             }
         }
-        
+    }
+    .input30{
+        width: 100%;
+    }
+    .input70{
+        width: 100%;
     }
 }
 @media screen and (max-width:512px) {
