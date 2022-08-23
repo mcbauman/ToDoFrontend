@@ -5,7 +5,6 @@ import {MdDownloadDone, MdDarkMode, MdLightMode } from "react-icons/md"
 import {AiOutlineCloseCircle} from "react-icons/ai"
 import {AiOutlineDelete}from "react-icons/ai"
 import { GiConfirmed } from "react-icons/gi" 
-import e from "cors"
 
 export default function ToDoList(props){
     const [items,setItems]=useState([])
@@ -17,9 +16,10 @@ export default function ToDoList(props){
     function GetItems(){
         const header = { Authorization: `Bearer ${props.user}` };
         const data = {}
-        axios.post(`https://localhost:7122/getItems`,data,{headers:header})
+        axios.post(`http://localhost:7122/getItems`,data,{headers:header})
         .then(res=>{
             setItems(res.data)
+            console.log(res.data);
         })
         .catch(err=>console.log(err))
     }
@@ -27,10 +27,10 @@ export default function ToDoList(props){
     function StoreNewTask(e){
         e.preventDefault();
         const headers = { Authorization: `Bearer ${props.user}` };
-        const data = {ItemName,Discription}
+        const data = {itemName:ItemName,discription:Discription}
         console.log(headers);
         console.log(data);
-        axios.post("https://localhost:7122/Item",data,{headers:headers})
+        axios.post("http://localhost:7122/Item",data,{headers:headers})
         .then(res=>{
             GetItems();
             setTaksName()
@@ -44,7 +44,7 @@ export default function ToDoList(props){
         const headers = { Authorization: `Bearer ${props.user}` };
         const data={id,itemName,discription}
         console.log(data);
-        axios.delete("https://localhost:7122/Item",{headers:headers,data:data})
+        axios.delete("http://localhost:7122/Item",{headers:headers,data:data})
         .then(res=>{
             GetItems();
         })
@@ -54,7 +54,7 @@ export default function ToDoList(props){
     function updateItem(id){
         const data={id, ItemName, Discription}
         const headers = { Authorization: `Bearer ${props.user}` };
-        axios.put("https://localhost:7122/Item",data,{headers:headers})
+        axios.put("http://localhost:7122/Item",data,{headers:headers})
         .then(res=>{
             GetItems();
             setShow2(false);
