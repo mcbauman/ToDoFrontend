@@ -16,7 +16,7 @@ export default function ToDoList(props){
     function GetItems(){
         const header = { Authorization: `Bearer ${props.user}` };
         const data = {}
-        axios.post(`http://localhost:7122/getItems`,data,{headers:header})
+        axios.post(`${process.env.REACT_APP_BE_SERVER}/getItems`,data,{headers:header})
         .then(res=>{
             setItems(res.data)
             console.log(res.data);
@@ -28,7 +28,7 @@ export default function ToDoList(props){
         e.preventDefault();
         const headers = { Authorization: `Bearer ${props.user}` };
         const data = {itemName:ItemName,discription:Discription}
-        axios.post("http://localhost:7122/Item",data,{headers:headers})
+        axios.post(`${process.env.REACT_APP_BE_SERVER}/Item`,data,{headers:headers})
         .then(res=>{
             GetItems();
             setTaksName()
@@ -41,7 +41,7 @@ export default function ToDoList(props){
     function removeItem(id,itemName,discription){
         const headers = { Authorization: `Bearer ${props.user}` };
         const data={id,itemName,discription}
-        axios.delete("http://localhost:7122/Item",{headers:headers,data:data})
+        axios.delete(`${process.env.REACT_APP_BE_SERVER}/Item`,{headers:headers,data:data})
         .then(res=>{
             GetItems();
         })
@@ -51,7 +51,7 @@ export default function ToDoList(props){
     function updateItem(id){
         const data={id, ItemName, Discription}
         const headers = { Authorization: `Bearer ${props.user}` };
-        axios.put("http://localhost:7122/Item",data,{headers:headers})
+        axios.put(`${process.env.REACT_APP_BE_SERVER}/Item`,data,{headers:headers})
         .then(res=>{
             GetItems();
             setShow2(false);

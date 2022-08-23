@@ -10,7 +10,7 @@ export default function CreateUser(){
 
     function signUpFunction(e){
         e.preventDefault();
-        axios.post(`https://localhost:7122/user/create`,{name,email,password})
+        axios.post(`${process.env.REACT_APP_BE_SERVER}/user/create`,{name,email,password})
         .then ((res)=>{
         })
         .catch(err=>console.log(err))

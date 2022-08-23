@@ -8,7 +8,7 @@ export default function LogIn(props){
     const [password, setPassword]=useState("")
     function loginFunction(e){
         e.preventDefault();
-        axios.post(`http://localhost:7122/login`,{name,password})
+        axios.post(`${process.env.REACT_APP_BE_SERVER}/login`,{name,password})
         .then ((res)=>{
             if(res.data!="Password missmatch"){
                 props.setUser(res.data)
