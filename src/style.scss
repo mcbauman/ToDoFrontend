@@ -3,12 +3,7 @@
 body{
     margin:0;
     padding:0;
-    //background-image: url("../public/walp2.jpeg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: repeat;
-    background-color: rgba(113, 128, 147,1.0);
-    font-family: 'Ubuntu', sans-serif;
+
     .dark{
         --mainBG:rgba(53, 59, 72,1.0);
         --secBG:rgba(25, 42, 86,1.0);
@@ -23,7 +18,30 @@ body{
         --inactive:rgba(50, 50, 50, 1);
         --text:black;
     }
+    .dark2{
+        background-image: url("../public/walp2.jpeg");
+        --mainBG:rgb(253 239 176 / 7%);
+        --secBG:rgba(80, 80, 80, 0.8);
+        --alert:rgba(255, 0, 0, 0.6);
+        --inactive:rgba(211, 211, 211, 0.8);
+        --text:white;
+    }
+    .light2{
+        background-image: url("../public/walp2.jpeg");
+        --mainBG:rgb(253 239 176 / 7%);
+        --secBG:rgb(248 247 240 / 47%);
+        --alert:rgba(255, 0, 0, 0.6);
+        --inactive:rgba(50, 50, 50, 0.8);
+        --text:black;
+    }
     .App{
+            //background-image: url("../public/walp2.jpeg");
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    background-color: rgba(113, 128, 147,1.0);
+    font-family: 'Ubuntu', sans-serif;
         header{
             background-color: var(--secBG);
             backdrop-filter: blur(5px);

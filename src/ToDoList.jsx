@@ -65,6 +65,12 @@ export default function ToDoList(props){
     return (
         <div className={props.theme+" App"}>
             <header>
+                <select value={props.theme} onChange={e=>props.setTheme(e.target.value)}>
+                    <option value="dark">dark</option>
+                    <option value="light">light</option>
+                    <option value="dark2">dark2</option>
+                    <option value="light2">light2</option>
+                </select>
                 <button className="greenBtn" onClick={()=>props.setTheme(props.theme=="dark"?"light":"dark")}>
                     {props.theme=="dark"?<MdDarkMode/>:<MdLightMode/>}
                 </button>
