@@ -28,8 +28,6 @@ export default function ToDoList(props){
         e.preventDefault();
         const headers = { Authorization: `Bearer ${props.user}` };
         const data = {itemName:ItemName,discription:Discription}
-        console.log(headers);
-        console.log(data);
         axios.post("http://localhost:7122/Item",data,{headers:headers})
         .then(res=>{
             GetItems();
@@ -43,7 +41,6 @@ export default function ToDoList(props){
     function removeItem(id,itemName,discription){
         const headers = { Authorization: `Bearer ${props.user}` };
         const data={id,itemName,discription}
-        console.log(data);
         axios.delete("http://localhost:7122/Item",{headers:headers,data:data})
         .then(res=>{
             GetItems();
@@ -77,25 +74,25 @@ export default function ToDoList(props){
             <main>
                 {items.length>0?(
                     items.map(item=>(
-                        <section key={item.id}>
+                        <section key={item._id}>
                             <div className={show2?"enrolled specialDiv":"specialDiv"}>
-                                {show2!=item.id?(
-//List-Item
+                                {show2!=item._id?(
+//List-Item id=>_id
                                 (<div>
                                     <div>
                                     <input type="Checkbox"/>
-                                    <div>{item.id}</div>
+                                    {/* <div>{item._id}</div> */}
                                     <div className="bold">{item.itemName}</div>
                                 </div>
                                 <div>{item.discription}</div>
                                 <div className="btndiv">
-                                    <button className="yellowBtn" onClick={()=>setShow2(item.id)}><BiEditAlt/></button>
-                                    <button onClick={()=>removeItem(item.id,item.itemName,item.discription)}><AiOutlineDelete/></button>
+                                    <button className="yellowBtn" onClick={()=>setShow2(item._id)}><BiEditAlt/></button>
+                                    <button onClick={()=>removeItem(item._id,item.itemName,item.discription)}><AiOutlineDelete/></button>
                                 </div>
                                 </div>)
                                 ):
 // Update ITEM
-                                <form onSubmit={(e)=>{updateItem(item.id); e.preventDefault()}}>
+                                <form onSubmit={(e)=>{updateItem(item._id); e.preventDefault()}}>
                                     <input className="input30" type="text" placeholder={item.itemName} onChange={e=>setTaksName(e.target.value)}/>
                                     <input className="input70" type="text" placeholder={item.discription} onChange={e=>setTaskDesc(e.target.value)}/>
                                     <div className="btndiv">
