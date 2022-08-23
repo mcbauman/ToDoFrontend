@@ -238,7 +238,7 @@ body{
             text-decoration: none;
             font-size: 2.5rem;
             text-align: center;
-            background-color: var(--mainBG);
+            //background-color: var(--mainBG);
             color: var(--text);
             border-radius: 10px;
             // box-shadow: 1px 1px 1px white inset;
@@ -274,7 +274,7 @@ form{
     // padding: 10px;
     input{
         text-align: center;
-        background-color: var(--mainBG);
+        background-color: rgba(255, 255, 255, 0);
         border: solid 1px var(--secBG);
         color: var(--text);
         border-radius: 10px;
