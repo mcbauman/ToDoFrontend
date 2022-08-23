@@ -71,9 +71,9 @@ export default function ToDoList(props){
                     <option value="dark2">dark2</option>
                     <option value="light2">light2</option>
                 </select>
-                <button className="greenBtn" onClick={()=>props.setTheme(props.theme=="dark"?"light":"dark")}>
+                {/* <button className="greenBtn" onClick={()=>props.setTheme(props.theme=="dark"?"light":"dark")}>
                     {props.theme=="dark"?<MdDarkMode/>:<MdLightMode/>}
-                </button>
+                </button> */}
                 <h1>Your Todo List</h1>
                 <button onClick={()=>props.setUser("")}>LOG Out</button>
             </header>

@@ -5,34 +5,90 @@ body{
     padding:0;
 
     .dark{
+        button{
+            justify-content: center;
+            background-color: var(--secBG);
+            box-shadow: 1px 1px 1px black;
+        }
+        select{
+            box-shadow: 1px 1px 1px black;
+        }
+        // header{
+        //     button{
+        //         background-color: var(--secBG);
+        //     }
+        // }
         --mainBG:rgba(53, 59, 72,1.0);
         --secBG:rgba(25, 42, 86,1.0);
+        --itemBG:var(--mainBG);
         --alert:rgba(232, 65, 24,1.0);
         --inactive:rgba(211, 211, 211, 1);
         --text:white;
+        --hover:var(--text);
+        --hoverGreen:var(--text);
+        --hoverYellow:var(--text);
     }
     .light{
+        button{
+            justify-content: center;
+            background-color: var(--secBG);
+            box-shadow: 1px 1px 1px black;
+        }
+        select{
+            box-shadow: 1px 1px 1px black;
+        }
+        // header{
+        //     button{
+        //         background-color: var(--secBG);
+        //     }
+        // }
         --mainBG:rgba(245, 246, 250, 1);
         --secBG:rgba(251, 197, 49,1.0);
+        --itemBG:var(--mainBG);
         --alert:rgba(232, 65, 24,1.0);
         --inactive:rgba(50, 50, 50, 1);
         --text:black;
+        --hover:var(--text);
+        --hoverGreen:var(--text);
+        --hoverYellow:var(--text);
     }
     .dark2{
+        button{
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0);
+            &:hover{
+                box-shadow: 1px 1px 1px black inset;
+            }
+        }
         background-image: url("../public/walp2.jpeg");
         --mainBG:rgb(253 239 176 / 7%);
         --secBG:rgba(80, 80, 80, 0.8);
-        --alert:rgba(255, 0, 0, 0.6);
+        --itemBG:var(--secBG);
+        --alert:rgba(255, 0, 0, 1);
         --inactive:rgba(211, 211, 211, 0.8);
         --text:white;
+        --hover:var(--alert);
+        --hoverGreen:rgba(0, 254, 47, 1);
+        --hoverYellow:rgba(255, 255, 0, 1);
     }
     .light2{
+        button{
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0);
+            &:hover{
+                box-shadow: 1px 1px 1px black inset;
+            }
+        }
         background-image: url("../public/walp2.jpeg");
         --mainBG:rgb(253 239 176 / 7%);
         --secBG:rgb(248 247 240 / 47%);
-        --alert:rgba(255, 0, 0, 0.6);
+        --itemBG:var(--secBG);
+        --alert:rgba(255, 0, 0, 1);
         --inactive:rgba(50, 50, 50, 0.8);
         --text:black;
+        --hover:var(--alert);
+        --hoverGreen:rgba(0, 254, 47, 1);
+        --hoverYellow:rgba(255, 255, 0, 1);
     }
     .App{
             //background-image: url("../public/walp2.jpeg");
@@ -53,9 +109,9 @@ body{
                 padding: 0;
                 color: var(--text);
             }
-            button{
-                background-color: var(--secBG);
-            }
+            // button{
+            //     background-color: var(--secBG);
+            // }
         }
         main{
             font-size: 1.5rem;
@@ -73,8 +129,7 @@ body{
                 //flex-wrap: wrap;
                 border: var(--secBG) solid 1px;
                 backdrop-filter: blur(5px);
-                background-color: var(--mainBG);
-                background-color: var();
+                background-color: var(--itemBG);
                 color: var(--text);
                 border-radius: 10px;
                 margin-bottom: 15px;
@@ -111,6 +166,7 @@ body{
                 //width: 95%;
                 input{
                     //border: none;
+                    background-color: var(--itemBG);
                     font-size: 1.5rem;
                     text-align: start;
                     padding: 10px;
@@ -132,9 +188,6 @@ body{
                 input{
                     margin-right: 10px;
                     margin-bottom: 0;
-                }
-                button{
-
                 }
             }
         }
@@ -172,7 +225,7 @@ body{
             }
             &:hover{
                 &::placeholder{
-                    //color: rgba(251, 197, 49,1.0);
+                    color:var(--hoverYellow)
                 }
             }
         }
@@ -190,7 +243,7 @@ body{
             border-radius: 10px;
             // box-shadow: 1px 1px 1px white inset;
             &:hover{
-                // color: var(--alert);
+                color: var(--hover);
                 //box-shadow: 1px 1px 1px black inset;
                 transform: translate(2px, 2px);
             }
@@ -205,17 +258,14 @@ button{
     // text-align: center;
     display: flex;
     align-items: center;
-    justify-content: center;
-    background-color: var(--secBG);
     color: var(--text);
     border-radius: 10px;
     padding: 0 10px;
     margin-right: 10px;
     border: none;
-    box-shadow: 1px 1px 1px black;
     &:hover{
         transform: translate(2px, 2px);
-        //color: var(--alert);
+        color: var(--hover);
         //box-shadow: 1px 1px 1px black inset;
     }
 }
@@ -236,6 +286,25 @@ form{
         }
     }
 }
+select{
+    min-height: 46px;
+    min-width: 46px;
+    font-size: 1.5rem;
+    // height: 24px;
+    // text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--secBG);
+    color: var(--text);
+    border-radius: 10px;
+    padding: 0 10px;
+    margin-right: 10px;
+    border: none;
+    &:hover{
+        color: var(--hoverYellow);
+    }
+}
 .specialDiv{
     flex-wrap: wrap;
 }
@@ -250,14 +319,14 @@ form{
 }
 .greenBtn{
     &:hover{
-        //color: rgba(76, 209, 55,1.0);
+        color: var(--hoverGreen);
         //box-shadow: 1px 1px 1px black inset;
         transform: translate(2px, 2px);
     }
 }
 .yellowBtn{
     &:hover{
-        //color: white;
+        color: var(--hoverYellow);
         //box-shadow: 1px 1px 1px black inset;
         transform: translate(2px, 2px);
     }

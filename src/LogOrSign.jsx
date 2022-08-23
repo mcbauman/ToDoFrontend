@@ -6,7 +6,12 @@ import {MdDownloadDone, MdDarkMode, MdLightMode } from "react-icons/md"
 export default function LogOrSign(props){
     return(
         <div className={props.theme+" App"}>
-            <button className="greenBtn" onClick={()=>props.setTheme(props.theme=="dark"?"light":"dark")}>{props.theme=="dark"?<MdDarkMode/>:<MdLightMode/>}</button>
+            <select value={props.theme} onChange={e=>props.setTheme(e.target.value)}>
+                    <option value="dark">dark</option>
+                    <option value="light">light</option>
+                    <option value="dark2">dark2</option>
+                    <option value="light2">light2</option>
+                </select>
             <Routes>
                 <Route path="*" element={<LogIn user={props.user} 
                 setUser={props.setUser} theme={props.theme} 
