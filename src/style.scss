@@ -3,27 +3,101 @@
 body{
     margin:0;
     padding:0;
-    background-image: url("../public/walp2.jpeg");
+
+    .dark{
+        button{
+            justify-content: center;
+            background-color: var(--secBG);
+            box-shadow: 1px 1px 1px black;
+        }
+        select{
+            box-shadow: 1px 1px 1px black;
+        }
+        // header{
+        //     button{
+        //         background-color: var(--secBG);
+        //     }
+        // }
+        --mainBG:rgba(53, 59, 72,1.0);
+        --secBG:rgba(25, 42, 86,1.0);
+        --itemBG:var(--mainBG);
+        --alert:rgba(232, 65, 24,1.0);
+        --inactive:rgba(211, 211, 211, 1);
+        --text:white;
+        --hover:var(--text);
+        --hoverGreen:var(--text);
+        --hoverYellow:var(--text);
+    }
+    .light{
+        button{
+            justify-content: center;
+            background-color: var(--secBG);
+            box-shadow: 1px 1px 1px black;
+        }
+        select{
+            box-shadow: 1px 1px 1px black;
+        }
+        // header{
+        //     button{
+        //         background-color: var(--secBG);
+        //     }
+        // }
+        --mainBG:rgba(245, 246, 250, 1);
+        --secBG:rgba(251, 197, 49,1.0);
+        --itemBG:var(--mainBG);
+        --alert:rgba(232, 65, 24,1.0);
+        --inactive:rgba(50, 50, 50, 1);
+        --text:black;
+        --hover:var(--text);
+        --hoverGreen:var(--text);
+        --hoverYellow:var(--text);
+    }
+    .dark2{
+        button{
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0);
+            &:hover{
+                box-shadow: 1px 1px 1px black inset;
+            }
+        }
+        background-image: url("../public/walp2.jpeg");
+        --mainBG:rgb(253 239 176 / 7%);
+        --secBG:rgba(80, 80, 80, 0.8);
+        --itemBG:var(--secBG);
+        --alert:rgba(255, 0, 0, 1);
+        --inactive:rgba(211, 211, 211, 0.8);
+        --text:white;
+        --hover:var(--alert);
+        --hoverGreen:rgba(0, 254, 47, 1);
+        --hoverYellow:rgba(255, 255, 0, 1);
+    }
+    .light2{
+        button{
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0);
+            &:hover{
+                box-shadow: 1px 1px 1px black inset;
+            }
+        }
+        background-image: url("../public/walp2.jpeg");
+        --mainBG:rgb(253 239 176 / 7%);
+        --secBG:rgb(248 247 240 / 47%);
+        --itemBG:var(--secBG);
+        --alert:rgba(255, 0, 0, 1);
+        --inactive:rgba(50, 50, 50, 0.8);
+        --text:black;
+        --hover:var(--alert);
+        --hoverGreen:rgba(0, 254, 47, 1);
+        --hoverYellow:rgba(255, 255, 0, 1);
+    }
+    .App{
+            //background-image: url("../public/walp2.jpeg");
+    min-height: 100vh;
     background-size: cover;
     background-position: center;
     background-repeat: repeat;
-    background-color: rgb(51, 58, 45);
+    background-color: rgba(113, 128, 147,1.0);
     font-family: 'Ubuntu', sans-serif;
-    .dark{
-        --mainBG:rgb(253 239 176 / 7%);
-        --secBG:rgba(64, 64, 64, 0.6);
-        --alert:rgba(255, 0, 0, 0.6);
-        --inactive:rgba(211, 211, 211, 0.8);
-        --text:white;
-    }
-    .light{
-        --mainBG:rgb(253 239 176 / 7%);
-        --secBG:rgb(248 247 240 / 47%);
-        --alert:rgba(255, 0, 0, 0.6);
-        --inactive:rgba(50, 50, 50, 0.8);
-        --text:black;
-    }
-    .App{
         header{
             background-color: var(--secBG);
             backdrop-filter: blur(5px);
@@ -35,6 +109,9 @@ body{
                 padding: 0;
                 color: var(--text);
             }
+            // button{
+            //     background-color: var(--secBG);
+            // }
         }
         main{
             font-size: 1.5rem;
@@ -52,7 +129,7 @@ body{
                 //flex-wrap: wrap;
                 border: var(--secBG) solid 1px;
                 backdrop-filter: blur(5px);
-                background-color: var(--secBG);
+                background-color: var(--itemBG);
                 color: var(--text);
                 border-radius: 10px;
                 margin-bottom: 15px;
@@ -65,7 +142,7 @@ body{
                     text-align: left;
                     form{
                         input{
-                            border: none;
+                            //border: none;
                             font-size: 1.5rem;
                         }
                     }
@@ -88,7 +165,8 @@ body{
                 display: flex;
                 //width: 95%;
                 input{
-                    border: none;
+                    //border: none;
+                    background-color: var(--itemBG);
                     font-size: 1.5rem;
                     text-align: start;
                     padding: 10px;
@@ -104,14 +182,12 @@ body{
                 padding: 10px;
                 border: var(--secBG) solid 1px;
                 backdrop-filter: blur(5px);
+                background-color: var(--mainBG);
                 color: var(--text);
                 border-radius: 10px;
                 input{
                     margin-right: 10px;
                     margin-bottom: 0;
-                }
-                button{
-
                 }
             }
         }
@@ -131,7 +207,8 @@ body{
         border: var(--secBG) solid 1px;
         color: var(--text);
         h1{
-            color:rgb(51, 58, 45);
+            //color:rgb(51, 58, 45);
+            //color: rgba(225, 177, 44,1.0);
             text-align: center;
         }
         input{
@@ -146,27 +223,70 @@ body{
             &::placeholder{
                 color:var(--inactive);
             }
+            &:hover{
+                &::placeholder{
+                    color:var(--hoverYellow)
+                }
+            }
         }
         button{
             font-size: 2.5rem;
             margin-bottom: 30px;
+            margin-right: 0;
         }
         a{
             text-decoration: none;
             font-size: 2.5rem;
             text-align: center;
-            background-color: var(--secBG);
+            background-color: var(--mainBG);
             color: var(--text);
             border-radius: 10px;
             // box-shadow: 1px 1px 1px white inset;
             &:hover{
-                background-color: rgba(255, 0, 0, 0.6);
-                box-shadow: 1px 1px 1px black inset;
+                color: var(--hover);
+                //box-shadow: 1px 1px 1px black inset;
+                transform: translate(2px, 2px);
             }
         }
     }
 }
 button{
+    min-height: 46px;
+    min-width: 46px;
+    font-size: 1.5rem;
+    // height: 24px;
+    // text-align: center;
+    display: flex;
+    align-items: center;
+    color: var(--text);
+    border-radius: 10px;
+    padding: 0 10px;
+    margin-right: 10px;
+    border: none;
+    &:hover{
+        transform: translate(2px, 2px);
+        color: var(--hover);
+        //box-shadow: 1px 1px 1px black inset;
+    }
+}
+form{
+    // margin: 0 auto;
+    // padding: 10px;
+    input{
+        text-align: center;
+        background-color: var(--mainBG);
+        border: solid 1px var(--secBG);
+        color: var(--text);
+        border-radius: 10px;
+        margin-bottom: 10px;
+        //margin-bottom: 10px;
+        font-size: 2.5rem;
+        &::placeholder{
+            color:var(--inactive);
+        }
+    }
+}
+select{
     min-height: 46px;
     min-width: 46px;
     font-size: 1.5rem;
@@ -181,26 +301,8 @@ button{
     padding: 0 10px;
     margin-right: 10px;
     border: none;
-    // box-shadow: 1px 1px 1px white inset;
     &:hover{
-        background-color: rgba(255, 0, 0, 0.6);
-        box-shadow: 1px 1px 1px black inset;
-    }
-}
-form{
-    // margin: 0 auto;
-    // padding: 10px;
-    input{
-        text-align: center;
-        background-color: var(--secBG);
-        color: var(--text);
-        border-radius: 10px;
-        margin-bottom: 10px;
-        //margin-bottom: 10px;
-        font-size: 2.5rem;
-        &::placeholder{
-            color:var(--inactive);
-        }
+        color: var(--hoverYellow);
     }
 }
 .specialDiv{
@@ -217,18 +319,20 @@ form{
 }
 .greenBtn{
     &:hover{
-        background-color: rgba(135, 254, 0, 0.6);
-        box-shadow: 1px 1px 1px black inset;
+        color: var(--hoverGreen);
+        //box-shadow: 1px 1px 1px black inset;
+        transform: translate(2px, 2px);
     }
 }
 .yellowBtn{
     &:hover{
-        background-color: rgba(219, 183, 20, 0.6);
-        box-shadow: 1px 1px 1px black inset;
+        color: var(--hoverYellow);
+        //box-shadow: 1px 1px 1px black inset;
+        transform: translate(2px, 2px);
     }
 }
 .bold{
-    font-style: italic;
+    // font-variant: small-caps;
 }
 .input30{
     width: 27%;

@@ -5,7 +5,6 @@ import {MdDownloadDone, MdDarkMode, MdLightMode } from "react-icons/md"
 import {AiOutlineCloseCircle} from "react-icons/ai"
 import {AiOutlineDelete}from "react-icons/ai"
 import { GiConfirmed } from "react-icons/gi" 
-import e from "cors"
 
 export default function ToDoList(props){
     const [items,setItems]=useState([])
@@ -17,9 +16,10 @@ export default function ToDoList(props){
     function GetItems(){
         const header = { Authorization: `Bearer ${props.user}` };
         const data = {}
-        axios.post(`https://localhost:7122/getItems`,data,{headers:header})
+        axios.post(`${process.env.REACT_APP_BE_SERVER}/getItems`,data,{headers:header})
         .then(res=>{
             setItems(res.data)
+            console.log(res.data);
         })
         .catch(err=>console.log(err))
     }
@@ -27,10 +27,8 @@ export default function ToDoList(props){
     function StoreNewTask(e){
         e.preventDefault();
         const headers = { Authorization: `Bearer ${props.user}` };
-        const data = {ItemName,Discription}
-        console.log(headers);
-        console.log(data);
-        axios.post("https://localhost:7122/Item",data,{headers:headers})
+        const data = {itemName:ItemName,discription:Discription}
+        axios.post(`${process.env.REACT_APP_BE_SERVER}/Item`,data,{headers:headers})
         .then(res=>{
             GetItems();
             setTaksName()
@@ -43,8 +41,7 @@ export default function ToDoList(props){
     function removeItem(id,itemName,discription){
         const headers = { Authorization: `Bearer ${props.user}` };
         const data={id,itemName,discription}
-        console.log(data);
-        axios.delete("https://localhost:7122/Item",{headers:headers,data:data})
+        axios.delete(`${process.env.REACT_APP_BE_SERVER}/Item`,{headers:headers,data:data})
         .then(res=>{
             GetItems();
         })
@@ -54,7 +51,7 @@ export default function ToDoList(props){
     function updateItem(id){
         const data={id, ItemName, Discription}
         const headers = { Authorization: `Bearer ${props.user}` };
-        axios.put("https://localhost:7122/Item",data,{headers:headers})
+        axios.put(`${process.env.REACT_APP_BE_SERVER}/Item`,data,{headers:headers})
         .then(res=>{
             GetItems();
             setShow2(false);
@@ -68,34 +65,40 @@ export default function ToDoList(props){
     return (
         <div className={props.theme+" App"}>
             <header>
-                <button className="greenBtn" onClick={()=>props.setTheme(props.theme=="dark"?"light":"dark")}>
+                <select value={props.theme} onChange={e=>props.setTheme(e.target.value)}>
+                    <option value="dark">dark</option>
+                    <option value="light">light</option>
+                    <option value="dark2">dark2</option>
+                    <option value="light2">light2</option>
+                </select>
+                {/* <button className="greenBtn" onClick={()=>props.setTheme(props.theme=="dark"?"light":"dark")}>
                     {props.theme=="dark"?<MdDarkMode/>:<MdLightMode/>}
-                </button>
+                </button> */}
                 <h1>Your Todo List</h1>
                 <button onClick={()=>props.setUser("")}>LOG Out</button>
             </header>
             <main>
                 {items.length>0?(
                     items.map(item=>(
-                        <section key={item.id}>
-                            <div className={show2?"enrolled specialDib":"specialDiv"}>
-                                {show2!=item.id?(
-//List-Item
+                        <section key={item._id}>
+                            <div className={show2?"enrolled specialDiv":"specialDiv"}>
+                                {show2!=item._id?(
+//List-Item id=>_id
                                 (<div>
                                     <div>
                                     <input type="Checkbox"/>
-                                    <div>{item.id}</div>
+                                    {/* <div>{item._id}</div> */}
                                     <div className="bold">{item.itemName}</div>
                                 </div>
                                 <div>{item.discription}</div>
                                 <div className="btndiv">
-                                    <button className="yellowBtn" onClick={()=>setShow2(item.id)}><BiEditAlt/></button>
-                                    <button onClick={()=>removeItem(item.id,item.itemName,item.discription)}><AiOutlineDelete/></button>
+                                    <button className="yellowBtn" onClick={()=>setShow2(item._id)}><BiEditAlt/></button>
+                                    <button onClick={()=>removeItem(item._id,item.itemName,item.discription)}><AiOutlineDelete/></button>
                                 </div>
                                 </div>)
                                 ):
 // Update ITEM
-                                <form onSubmit={(e)=>{updateItem(item.id); e.preventDefault()}}>
+                                <form onSubmit={(e)=>{updateItem(item._id); e.preventDefault()}}>
                                     <input className="input30" type="text" placeholder={item.itemName} onChange={e=>setTaksName(e.target.value)}/>
                                     <input className="input70" type="text" placeholder={item.discription} onChange={e=>setTaskDesc(e.target.value)}/>
                                     <div className="btndiv">
